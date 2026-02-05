@@ -46,13 +46,13 @@ function generateSparkles(): Sparkle[] {
   }));
 }
 
-// Use useSyncExternalStore to detect client-side rendering
-const emptySubscribe = () => () => {};
+// No-op subscription function for useSyncExternalStore to detect client-side rendering
+const noopSubscribe = () => () => {};
 
 export default function FloatingHearts() {
   // Detect if we're on the client side without causing the lint warning
   const isClient = useSyncExternalStore(
-    emptySubscribe,
+    noopSubscribe,
     () => true,
     () => false
   );
